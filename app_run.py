@@ -8,8 +8,9 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/index')
 def index():
-    data = "Deploying a Flask App To Heroku"
     """
+    data = "Deploying a Flask App To Heroku"
+    
     data_UserData = UserData.query.all()
     history_dic = {}
     history_list = []
@@ -21,7 +22,7 @@ def index():
         history_list.append(history_dic)
         history_dic = {}
     """
-    return render_template('index.html', **locals())
+    return render_template('index.html')
 
 
 @app.route('/API/add_data', methods=['POST'])
