@@ -20,7 +20,7 @@ def getComplains():
     conn = psycopg2.connect(database="d268qlch00j1lt", user="vtdymwiimcircz", password="ab0ffa3f42eda4ecb25df6a83514ca51b4fa08c69bd31e011680361b525cc54b", host="ec2-54-83-52-191.compute-1.amazonaws.com", port="5432")
     print ("Opened database successfully")
 
-    ur = conn.cursor()
+    cur = conn.cursor()
 
     cur.execute("SELECT *  from complains;")
     rows = cur.fetchall()
