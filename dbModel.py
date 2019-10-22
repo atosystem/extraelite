@@ -20,7 +20,7 @@ manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
 def getComplains():
-    result_set = db1.execute("SELECT * FROM complains")
+    result_set = db1.execute("SELECT * FROM complains;")
     return result_set
 
 class UserData(db.Model):
