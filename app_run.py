@@ -1,7 +1,7 @@
 from flask import *
 from datetime import datetime
 from dbModel import *
-
+import json
 app = Flask(__name__)
 
 
@@ -23,6 +23,25 @@ def index():
         history_dic = {}
     """
     return render_template('index.html')
+
+@app.route('/test')
+def test():
+    """
+    data = "Deploying a Flask App To Heroku"
+    
+    data_UserData = UserData.query.all()
+    history_dic = {}
+    history_list = []
+    for _data in data_UserData:
+        history_dic['Name'] = _data.Name
+        history_dic['Id'] = _data.Id
+        history_dic['Description'] = _data.Description
+        history_dic['CreateDate'] = _data.CreateDate.strftime('%Y/%m/%d %H:%M:%S')
+        history_list.append(history_dic)
+        history_dic = {}
+    """
+    
+    return json.dumps(getComplains())
 
 
 @app.route('/API/add_data', methods=['POST'])
