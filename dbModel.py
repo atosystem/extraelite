@@ -24,6 +24,13 @@ def getComplains():
 
     cur.execute("SELECT *  from complains;")
     rows = cur.fetchall()
+    columns = ('complain_id', 'user_line_id', 'complain_content', 'created_on', 'agree_number')
+    results = []
+    for row in rows:
+         results.append(dict(zip(columns, row)))
+    conn.close()
+    print ("Operation done successfully")
+    print results
     """
     for row in rows:
     print "ID = ", row[0]
@@ -31,10 +38,6 @@ def getComplains():
     print "ADDRESS = ", row[2]
     print "SALARY = ", row[3], "
     """
-
-    print ("Operation done successfully")
-    conn.close()
-    return rows
 
 class UserData(db.Model):
     __tablename__ = 'UserData'
