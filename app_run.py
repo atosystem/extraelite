@@ -41,7 +41,7 @@ def test():
         history_dic = {}
     """
     
-    return json.dumps(getComplains(),default=json_util.default)
+    return json.dumps(getComplains())
 
 
 @app.route('/API/add_data', methods=['POST'])

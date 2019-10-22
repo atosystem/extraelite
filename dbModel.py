@@ -22,7 +22,7 @@ def getComplains():
 
     cur = conn.cursor()
 
-    cur.execute("SELECT *  from complains;")
+    cur.execute("SELECT complain_id,complain_content  from complains;")
     rows = cur.fetchall()
     
     """
