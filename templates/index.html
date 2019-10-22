@@ -15,7 +15,7 @@
      <div class="container">
         <div class="jumbotron">
             <h1>This is example</h1>
-            <p>{{data}} Demo</p>
+            <p>Demo</p>
         </div>
         <h2>Please enter the information</h2>
           <form action="/API/add_data" method="post">
@@ -38,20 +38,13 @@
                 </tr>
             </thead>
             <tbody>
-               {% for history in history_list %}
-                   <tr>
-                        <td>{{ history.Id }}</td>
-                        <td>{{ history.Name }}</td>
-                        <td>{{ history.Description }}</td>
-                        <td>{{ history.CreateDate }}</td>
-                    </tr>
-               {% endfor%}
+               
             </tbody>
         </table>
       </div>
 
     <script>
-        $('#datatables').DataTable();
+        //$('#datatables').DataTable();
     </script>
 </body>
 </html>
