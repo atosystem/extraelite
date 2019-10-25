@@ -22,20 +22,19 @@ def getComplains():
 
     cur = conn.cursor()
 
-    cur.execute("SELECT complain_id,complain_content  from complains;")
+    cur.execute("SELECT complain_id,user_line_id,complain_content,agree_number  from complains;")
     rows = cur.fetchall()
     
-    """
+    j_data=[]
     for row in rows:
-    print "ID = ", row[0]
-    print "NAME = ", row[1]
-    print "ADDRESS = ", row[2]
-    print "SALARY = ", row[3], "
-    """
+        j_row={'complain_id':row[0],'user_line_id':row[1],'complain_content':row[2],'agree_number':row[3]}
+        j_data = j_data.append(j_row)
+    
+    
 
     print ("Operation done successfully")
     conn.close()
-    return rows
+    return j_data
 
 class UserData(db.Model):
     __tablename__ = 'UserData'
