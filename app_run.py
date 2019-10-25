@@ -47,7 +47,7 @@ def testj():
             else:
                 hash[word] = 1
                 print(word)
-    return hash
+    return str(hash)
 
 
 @app.route('/API/add_data', methods=['POST'])
