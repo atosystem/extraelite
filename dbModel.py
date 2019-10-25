@@ -28,7 +28,7 @@ def getComplains():
     j_data=[]
     for row in rows:
         j_row={'complain_id':row[0],'user_line_id':row[1],'complain_content':row[2],'agree_number':row[3]}
-        j_data = j_data.append(j_row)
+        j_data.append(j_row)
     
     
 
