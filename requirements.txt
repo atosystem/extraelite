@@ -8,3 +8,4 @@ Jinja2==2.9.5
 MarkupSafe==0.23
 Werkzeug==0.15.5
 psycopg2==2.7.3.1
+jieba==0.39
