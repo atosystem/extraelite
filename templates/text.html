@@ -5,10 +5,12 @@
     <title>第{{name_id}}個議題</title>
   </head>
   <body style='font-family:DFKai-sb; background-color: #ffdeb5; background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");'>
+    <div style = "padding-bottom:100px">
 	<h1 align="center">這是第{{name_id}}個議題<h1>
 	<h2>已有<strong>{{agree}}</strong>個人覆議</h2>
 	<h2>議題內容：</h2>
 	<h3 style='white-space: pre-line'>{{text}}</h3>
-	<div id="Footer" style = "height:100px;position:absolute;bottom:0px;"><a href='/texts' valign="middle">上一頁</a></div>
+	</div>
+	<div id="Footer" style = "height:100px;position:relative;margin-top:-100px;"><a href='/texts' valign="middle">上一頁</a></div>
   </body>
 </html>
