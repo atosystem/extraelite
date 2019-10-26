@@ -83,7 +83,8 @@ def texts():
         agree_num = whole_data[tex_id-1]["agree_number"]
         return render_template('text.html',name_id = tex_id, text = content, agree = agree_num)
     except:
-        return render_template('text0.html')
+        return render_template('text0.html', whole_list = getComplains())
+
 @app.route('/API/add_data', methods=['POST'])
 def add_data():
     name = request.form['name']

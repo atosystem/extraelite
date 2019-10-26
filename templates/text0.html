@@ -6,33 +6,10 @@
   <body style='font-family:DFKai-sb; background-color: #ffdeb5; background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");'>
 	<h1 align="center">議題列表<h1>
 	<div id = "conlist"></div>
-	<script>
-	function createXMLHttpRequest(){
-		  if(window.ActiveXObject){
-			xmlobj=new ActiveXObject("Microsoft.XMLHTTP");
-		  }
-		  else if(window.XMLHttpRequest){
-			xmlobj=new XMLHttpRequest();
-		  }
-    }
-	createXMLHttpRequest();
-	xmlobj.open("POST","/test",true);
-	xmlobj.send("r="+Math.random());
-	xmlobj.onreadystatechange = function(){
-		if(xmlobj.readyState === 4 && xmlobj.status === 200){
-		var data = xmlobj.responseText();
-		console.log(data);
-		console.log(typeof data);
-		var text = toString(data);
-		for(var i=0; i<data.length(); i++){
-			text = text + "<a href='/texts?name_id="+data[i]["complain_id"]+"'>第"+data[i]["complain_id"]+"項議題</a>";
-		}
-		
-		document.getElementById("conlist").innerHTML=text;
-		}
-	}
-	
-	
-	</script>
+	<ul>
+	{% for user in whole_list %}
+	  <li><a href="/texts?name=".{{user.complain_id}}>13</a></li>
+	{% endfor %}
+	</ul> 
   </body>
 </html>
