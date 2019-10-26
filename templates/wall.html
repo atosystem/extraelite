@@ -35,9 +35,15 @@
 		  var fill = d3.scale.category20();
 
 		  //要顯示於標籤雲的資料內容，為一個JSON物件的陣列
+		  createXMLHttpRequest();
+		  var data2 = {};
+		  xmlobj.onreadystatechange = function(){
+			var data2 = this.responseText;
+		  }
+		  xmlobj.open("GET","./testj",true);
+		  xmlobj.send("r="+Math.random());
 		  
-		  Autofresh();
-		  var data2 = xmlobj.response;
+		  
 		  console.log(typeof data2); 	
 		  console.log(data2);
 
