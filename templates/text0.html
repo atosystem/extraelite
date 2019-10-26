@@ -21,6 +21,8 @@
 	xmlobj.onreadystatechange = function(){
 		if(xmlobj.readyState === 4 && xmlobj.status === 200){
 		var data = xmlobj.responseText;
+		console.log(data);
+		console.log(typeof data);
 		var text = toString(data);
 		for(var i=0; i<data.length(); i++){
 			text = text + "<a href='/texts?name_id='"+data[i]["complain_id"]+">第"+data[i]["complain_id"]+"項議題</a>";
