@@ -33,7 +33,6 @@ def wall():
 
 @app.route('/test')
 def test():
-    
     return json.dumps(getComplains())
 
 @app.route('/testj',methods = ['POST', 'GET'])
@@ -53,7 +52,14 @@ def testj():
                 #print(word)
     return str(hash)
 
-
+@app.route('/texts',method = ['POST','GET'])
+def texts():
+    tex_id = request.args.get('name_id'):
+    if type(tex_id)!=type(3) or tex_id<1:
+        return 'err';
+    whole_data = getComplains()
+    content = whole_data[tex_id-1]["complain_content"]
+    return content
 
 
 @app.route('/API/add_data', methods=['POST'])
