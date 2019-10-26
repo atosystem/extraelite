@@ -32,7 +32,7 @@
 	  run_Cloud();
 	  function run_Cloud() {
 		  document.getElementById('wCloud').innerHTML = "";
-		  var fill = d3.scale.category20();
+		  var fill = json.parse(d3.scale.category20());
 		  //要顯示於標籤雲的資料內容，為一個JSON物件的陣列
 		  
 		  Autofresh();
