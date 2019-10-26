@@ -36,7 +36,7 @@ def test():
     
     return json.dumps(getComplains())
 
-@app.route('/testj', methods=['POST'])
+@app.route('/testj')
 def testj():
     print("斷詞中...")
     jieba.load_userdict("userdict.txt")
@@ -52,6 +52,8 @@ def testj():
                 hash[word] = 1
                 #print(word)
     return str(hash)
+
+
 
 
 @app.route('/API/add_data', methods=['POST'])
