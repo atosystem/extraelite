@@ -9,10 +9,10 @@
 	<ul>
 	{% for user in whole_list %}
 	  <li><a href="{{'/texts?name_id=%s'%user['complain_id']}}">
-	  {% if user["complain_id"]|length < 20 %}
-	  {{user["complain_id"]}}
+	  {% if user["complain_content"]|length<20 %}
+	  {{user["complain_content"]}}
 	  {% else %}
-	  {{user["complain_id"][:20]}}
+	  {{user["complain_content"][:20]}}
 	  {% endif%}
 	  </a></li>
 	{% endfor %}
