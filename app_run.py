@@ -52,7 +52,7 @@ def testj():
                 #print(word)
     return str(hash)
 
-@app.route('/texts',method = ['POST','GET'])
+@app.route('/texts',methods = ['POST','GET'])
 def texts():
     tex_id = request.args.get('name_id')
     if type(tex_id)!=type(3) or tex_id<1:
