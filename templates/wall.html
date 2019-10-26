@@ -37,11 +37,12 @@
 		  //要顯示於標籤雲的資料內容，為一個JSON物件的陣列
 		  createXMLHttpRequest();
 		  //var data2 = {};
-		  xmlobj.onreadystatechange = function(){
-			var data2 = this.responseText;
-		  }
-		  xmlobj.open("GET","./testj",true);
+		  
+		  xmlobj.open("POST","./testj",true);
 		  xmlobj.send("r="+Math.random());
+		  xmlobj.onreadystatechange = function(){
+		  if(xmlobj.readyState === 4 && xmlobj.status === 200){
+			var data2 = xmlobj.responseText;
 		  
 		  
 		  console.log(typeof data2); 	
@@ -82,7 +83,9 @@
 			  window.open(d.url);
 			});
 			}
+			
 		  setTimeout("run_Cloud()",2000);
+		  }}
 		}
 	</script>
 </body>
