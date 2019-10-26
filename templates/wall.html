@@ -21,7 +21,7 @@
       }
 	  function Autofresh(){
 		  createXMLHttpRequest();    
-		  xmlobj.open("POST","./testj",true);
+		  xmlobj.open("GET","./testj",true);
 		  xmlobj.send("r="+Math.random());//使用隨機數處理緩存
 		  //xmlobj.onreadystatechange=;
 	  }
