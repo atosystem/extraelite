@@ -3,7 +3,75 @@
     <title>Wall</title>
     <script src="static/javascripts/jquery.min.js"></script>
     <script src="static/javascripts/bootstrap.min.js"></script>
+	<script src="https://sites.google.com/site/bioankeyang/study/javascript/d3/d3.js"></script>
+    <script src="https://sites.google.com/site/bioankeyang/study/javascript/d3/d3.layout.cloud.js"></script>
+
 </head>
 <body>
-
+<p>hello?</p>
+	<div id = "wCloud" style="border: 1px solid #000; height: 300px; width: 600px;"></div>  
+	<script>
+	  function createXMLHttpRequest(){
+		  if(window.ActiveXObject){
+			xmlobj=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		  else if(window.XMLHttpRequest){
+			xmlobj=new XMLHttpRequest();
+		  }
+      }
+	  function Autofresh(){
+		  createXMLHttpRequest();    
+		  xmlobj.open("GET","./testj",true);
+		  xmlobj.send("r="+Math.random());//使用隨機數處理緩存
+		  //xmlobj.onreadystatechange=;
+	  }
+	  
+	  
+	
+	
+	  run_Cloud();
+	  function run_Cloud() {
+		  document.getElementById('wCloud').innerHTML = "";
+		  var fill = d3.scale.category20();
+		  //要顯示於標籤雲的資料內容，為一個JSON物件的陣列
+		  
+		  Autofresh();
+		  var data2 = xmlobj.responseText;
+		  //{'測試': 1, 'Hello': 1, 'world': 1, 'What': 2, 'time': 2, '我們': 3, '國家': 3, '這個': 2, '總統': 1, '感謝': 1, '我要': 1, '承擔': 1, '告訴': 1, '一個': 3, '團結': 1, '選舉': 1, '過程': 1, '種種': 1, '不會': 1, '邀請': 1, '全體': 1, '未來': 3, '奮鬥': 1, '共同': 1, '新政府': 3, '輕人': 1, '處境': 1, '責任': 1, '結構': 2, '問題': 1, '沒有': 1, '改變': 1, '已經': 1, '社會': 1, '經濟': 2, '嚴重': 1, '世代': 1, '制度': 1, '就是': 1, '發展': 1, '產業': 1, '灣經濟': 1, '國土': 1, '模式': 1, '轉型': 1, '灣的': 1, '這是': 1, '企業': 1, '必須': 1, '決心': 1, '創新': 1, '永續': 1, '台灣': 1, '子程': 1, '好強': 1, '說法': 1, '柯文': 1, '帶來': 1, '困擾': 1, '引發': 1, '爭議': 1, '駐台灣': 1, '達瓦才仁': 1, '昨指柯': 1, '照柯': 1, '猶太人': 1, '也給': 1, '麻煩': 1, '藏人': 1, '台北市': 1, '一百多': 1, '一席': 1, '自焚': 1, '冷漠': 1, '前天': 1, 'line': 1, 'app': 1, '1568167918': 1, 'lVyRXnN8': 1};
+		  
+		  var data = [];
+		  for(var key in data2){
+			data.push({text:key, size:data2[key]*10+20, url: ''})
+		  }
+		  d3.layout.cloud().size([ 600, 300 ]).words(data).padding(3).rotate(
+			  0).font('"微軟正黑體",Impact').fontSize(function(d) {
+			return d.size;
+		  }).on("end", draw).start();
+		 
+		  function draw(words) {
+			d3.select("#wCloud") //要插入標籤雲的tag id
+			.append("svg").attr("width", 600).attr("height", 300)
+			.append("g").attr("transform", "translate(300,150)") //這裡的值要對應到繪圖區域的寬、高的一半，針對不同的瀏覽器要設可以使用的值，如Chrome為-webkit-transform
+			.selectAll("text").data(words).enter().append("text")
+			.style("font-size", function(d) {
+				  return d.size + "px";
+				})
+			.style("font-family", '"微軟正黑體",Impact')
+			.style("cursor", 'pointer')//當滑鼠移上去時，變換cursor
+			.style("fill", function(d, i) {
+			  return fill(i);
+			}).attr("text-anchor", "middle")
+			.attr("transform",//跟上面的transform一樣，需依不同的瀏覽器設定對應的值
+				function(d) {
+				  return "translate(" + [ d.x, d.y ] + ")rotate(" + (Math.random()-0.5)*20 + ")";
+				})
+			.text(function(d) {
+			  return d.text;
+			}).on('click', function(d) {//點按文字後，開啟超連結
+			  window.open(d.url);
+			});
+			}
+		  setTimeout("run_Cloud()",2000);
+		}
+	</script>
 </body>
