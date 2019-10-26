@@ -65,12 +65,12 @@ def testj2():
         seg_list = jieba.analyse.extract_tags(paragraph["complain_content"])#jieba.cut(paragraph["complain_content"],cut_all=False)
         for word in seg_list:
             if word in hash:
-                hash[word][0]+=1
+                hash[word][0]+=(1.5+0.5*paragraph["agree_number"])
                 if paragraph["agree_number"]>=hash[word][2]:
                     hash[word][1]=id
                     hash[word][2]=paragraph["agree_number"]
             else:
-                hash[word] = [1,id,paragraph["agree_number"]]
+                hash[word] = [(1.5+0.5*paragraph["agree_number"]),id,paragraph["agree_number"]]
                 #print(word)
     return str(hash)
 
