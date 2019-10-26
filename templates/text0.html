@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>議題列表</title>
+  </head>
+  <body style='font-family:DFKai-sb; background-color: #ffdeb5; background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");'>
+	<h1 align="center">議題列表<h1>
+	<div id = "conlist"></div>
+	<script>
+	function createXMLHttpRequest(){
+		  if(window.ActiveXObject){
+			xmlobj=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		  else if(window.XMLHttpRequest){
+			xmlobj=new XMLHttpRequest();
+		  }
+    }
+	createXMLHttpRequest();
+	xmlobj.open("POST","./test",true);
+	xmlobj.send("r="+Math.random());
+	xmlobj.onreadystatechange = function(){
+		if(xmlobj.readyState === 4 && xmlobj.status === 200){
+		var data = JSON.parse(xmlobj.responseText.replace(/'/g, '"'));
+		document.getElementById("conlist").innerHTML='data';
+		}
+	}
+	
+	
+	</script>
+  </body>
+</html>

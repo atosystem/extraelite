@@ -76,15 +76,14 @@ def testj2():
 
 @app.route('/texts',methods = ['POST','GET'])
 def texts():
-    tex_id = int(request.args.get('name_id'))
-    if type(tex_id)!=type(3) or tex_id<1:
-        return tex_id;
-    whole_data = getComplains()
-    content = whole_data[tex_id-1]["complain_content"]
-    agree_num = whole_data[tex_id-1]["agree_number"]
-    return render_template('text.html',name_id = tex_id, text = content, agree = agree_num)
-
-
+    try:
+        tex_id = int(request.args.get('name_id'))
+        whole_data = getComplains()
+        content = whole_data[tex_id-1]["complain_content"]
+        agree_num = whole_data[tex_id-1]["agree_number"]
+        return render_template('text.html',name_id = tex_id, text = content, agree = agree_num)
+    except:
+        return render_template('text0.html')
 @app.route('/API/add_data', methods=['POST'])
 def add_data():
     name = request.form['name']
