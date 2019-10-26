@@ -42,7 +42,7 @@
 		  createXMLHttpRequest();
 		  //var data2 = {};
 		  
-		  xmlobj.open("POST","./testj",true);
+		  xmlobj.open("POST","./testj2",true);
 		  xmlobj.send("r="+Math.random());
 		  xmlobj.onreadystatechange = function(){
 		  if(xmlobj.readyState === 4 && xmlobj.status === 200){
@@ -57,7 +57,7 @@
 			  var data = [];
 			  for(var key in data2){
 				//console.log(key);
-				data.push({text:key, size:data2[key]*10+20, url: ''})
+				data.push({text:key, size:data2[key][0]*10+20, url: './texts?name_id='+data2[key][1]})
 			  }
 			  d3.layout.cloud().size([ W, H ]).words(data).padding(3).rotate(
 			  0).font('"微軟正黑體",Impact').fontSize(function(d) {

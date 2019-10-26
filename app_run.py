@@ -52,6 +52,28 @@ def testj():
                 #print(word)
     return str(hash)
 
+@app.route('/testj2',methods = ['POST', 'GET'])
+def testj2():
+    print("斷詞中...")
+    jieba.load_userdict("userdict.txt")
+    jieba.analyse.set_stop_words("stopword.txt")
+    hash = {}
+    id = 0
+    for paragraph in getComplains():
+        id+=1
+        #print(paragraph["complain_content"])
+        seg_list = jieba.analyse.extract_tags(paragraph["complain_content"])#jieba.cut(paragraph["complain_content"],cut_all=False)
+        for word in seg_list:
+            if word in hash:
+                hash[word][0]+=1
+                if paragraph["agree_number"]>=hash[word][2]:
+                    hash[word][1]=id
+                    hash[word][2]=paragraph["agree_number"]
+            else:
+                hash[word] = [1,id,paragraph["agree_number"]]
+                #print(word)
+    return str(hash)
+
 @app.route('/texts',methods = ['POST','GET'])
 def texts():
     tex_id = int(request.args.get('name_id'))
