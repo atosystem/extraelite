@@ -56,10 +56,10 @@ def testj():
 def texts():
     tex_id = int(request.args.get('name_id'))
     if type(tex_id)!=type(3) or tex_id<1:
-        return 'err';
+        return tex_id;
     whole_data = getComplains()
     content = whole_data[tex_id-1]["complain_content"]
-    return content
+    return render_template('text.html',name_id = tex_id, text = content)
 
 
 @app.route('/API/add_data', methods=['POST'])
