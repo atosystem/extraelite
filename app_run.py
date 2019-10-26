@@ -59,7 +59,8 @@ def texts():
         return tex_id;
     whole_data = getComplains()
     content = whole_data[tex_id-1]["complain_content"]
-    return render_template('text.html',name_id = tex_id, text = content)
+    agree_num = whole_data[tex_id-1]["agree_number"]
+    return render_template('text.html',name_id = tex_id, text = content, agree = agree_num)
 
 
 @app.route('/API/add_data', methods=['POST'])
