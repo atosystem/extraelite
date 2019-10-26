@@ -27,6 +27,10 @@ def index():
     """
     return render_template('index.html')
 
+@app.route('/wall')
+def wall():
+    return render_template('wall.html')
+
 @app.route('/test')
 def test():
     
