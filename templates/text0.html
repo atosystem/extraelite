@@ -8,8 +8,7 @@
 	<div id = "conlist"></div>
 	<ul>
 	{% for user in whole_list %}
-	  $url = "/texts?name="+{{user["complain_id"]}}
-	  <li><a href=$url>{{user["complain_id"]}}</a></li>
+	  <li><a href="{{'/texts?name=' |add user['complain_id']}}">{{user["complain_id"]}}</a></li>
 	{% endfor %}
 	</ul> 
   </body>
