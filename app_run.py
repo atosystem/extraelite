@@ -31,7 +31,7 @@ def index():
 def wall():
     return render_template('wall.html')
 
-@app.route('/test')
+@app.route('/test',methods = ['POST', 'GET'])
 def test():
     return json.dumps(getComplains())
 
