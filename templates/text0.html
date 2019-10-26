@@ -8,7 +8,7 @@
 	<div id = "conlist"></div>
 	<ul>
 	{% for user in whole_list %}
-	  <li><a href="/texts?name="+{{user["complain_id"]}}>123</a></li>
+	  <li><a href="/texts?name="+{{user["complain_id"]}}>{{user["complain_id"]}}</a></li>
 	{% endfor %}
 	</ul> 
   </body>
