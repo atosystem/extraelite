@@ -21,6 +21,6 @@ for paragraph in file1:
             hash[word]+=1
         else:
             hash[word] = 1
-            print(word)
+            #print(word)
 
 json.dump(hash, codecs.open("count.json", 'w', encoding="utf-8"), indent=4, ensure_ascii=False)
