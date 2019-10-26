@@ -42,7 +42,7 @@
 		  xmlobj.send("r="+Math.random());
 		  xmlobj.onreadystatechange = function(){
 		  if(xmlobj.readyState === 4 && xmlobj.status === 200){
-			var data2 = JSON.parse(xmlobj.responseText);
+			var data2 = xmlobj.responseText;
 		  
 		  
 		  console.log(typeof data2); 	
