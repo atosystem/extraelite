@@ -54,7 +54,7 @@ def testj():
 
 @app.route('/texts',method = ['POST','GET'])
 def texts():
-    tex_id = request.args.get('name_id'):
+    tex_id = request.args.get('name_id')
     if type(tex_id)!=type(3) or tex_id<1:
         return 'err';
     whole_data = getComplains()
