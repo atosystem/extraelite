@@ -50,7 +50,7 @@ def testj():
                 hash[word]+=1
             else:
                 hash[word] = 1
-                print(word)
+                #print(word)
     return str(hash)
 
 
