@@ -36,7 +36,7 @@ def test():
     
     return json.dumps(getComplains())
 
-@app.route('/testj')
+@app.route('/testj',methods = ['POST', 'GET'])
 def testj():
     print("斷詞中...")
     jieba.load_userdict("userdict.txt")
