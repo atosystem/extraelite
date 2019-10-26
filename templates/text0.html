@@ -12,7 +12,7 @@
 	  {% if user["complain_content"]|length<20 %}
 	  {{user["complain_content"]}}
 	  {% else %}
-	  {{user["complain_content"][:20]}}
+	  {{'%s......'%user["complain_content"][:20]}}
 	  {% endif%}
 	  </a></li>
 	{% endfor %}
